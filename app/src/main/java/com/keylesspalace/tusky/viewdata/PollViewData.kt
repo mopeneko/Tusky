@@ -53,7 +53,10 @@ fun calculatePercent(fraction: Int?, totalVoters: Int?, totalVotes: Int): Int {
     return if (fraction == null || fraction == 0) {
         0
     } else {
-        val total = totalVoters ?: totalVotes
+        var total = totalVotes
+        if (totalVoters != null && totalVoters > 0) {
+            total = totalVoters
+        }
         (fraction / total.toDouble() * 100).roundToInt()
     }
 }
